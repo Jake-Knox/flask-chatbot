@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Main Page</title>
+    {% endblock %}
+  <body class="text-center">
+    
+    {% block content %}
+
+    
+    
+    <h1> Meet Phil Resch </h1>
+      
+    <div id="chatbox" class="card text-center">
+        <div id="answerbox">
+            <img src="\static\images\philresche3.png" class="resch" alt="robot" id="robotimg">
+            <div class="card" id="">
+                <h2>Resch says...</h2>
+                <div class="message-box scroll" id="chat-messages-div">
+                  <script src="/static/scripts/chatbot.js"></script>
+                  {% for answer in answer_list %}                  
+                  <script class="creator-script">
+                    // console.log("{{answer}}")
+                    createDiv({{answer|tojson}}) 
+                    // typewriter()
+                  </script>
+                  {% endfor %}
+                </div>
+                <br><br>
+                <form role="form" method='POST' action='/chatbot' class="form" id="my_form">
+                  <div class="form-group text-center" id="questionbox">
+                    <input type="text" name="message" class="" id="message-box" placeholder="Enter question" style="max-width: 300px;" autofocus required>
+                  </div>
+                  <button type="submit" style="display: none" class="btn btn-default">Submit</button>
+                  <button type="reset" style="display: none" class="btn btn-default">reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <p> Flask is a micro web framework written in Python.</p>
+    <p> Applications that use the Flask framework include Pinterest,
+      LinkedIn, and the community web page for Flask itself.</p>    
+    {% endblock %}  
+    
+  </body>
+</html>
